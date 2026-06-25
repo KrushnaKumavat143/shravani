@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&display=swap');
+@import "tailwindcss";
+
+/* ─── ROOT ─── */
+:root {
+  --krishna-blue: #1a3a5c;
+  --krishna-deep: #0d1f33;
+  --peacock: #006d6f;
+  --peacock-light: #00a89d;
+  --saffron: #e8862a;
+  --gold: #d4a030;
+  --gold-light: #f5d47a;
+  --lotus-pink: #d94f7a;
+  --cream: #fdf6ec;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Tiro Devanagari Marathi', serif;
+  overflow-x: hidden;
+  background: var(--krishna-deep);
+  color: #fff;
+}
+
+/* ─── FONTS ─── */
+.f-marathi { font-family: 'Tiro Devanagari Marathi', serif; }
+.f-cursive { font-family: 'Great Vibes', cursive; }
+.f-dancing { font-family: 'Dancing Script', cursive; }
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--krishna-deep); }
+::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--gold), var(--saffron)); border-radius: 4px; }
+
+/* ═══════════════════════════
+   KEYFRAMES
+   ═══════════════════════════ */
+@keyframes floatUp {
+  0%   { transform: translateY(0) rotate(0deg) scale(.6); opacity:0; }
+  8%   { opacity:.9; }
+  100% { transform: translateY(-115vh) rotate(35deg) scale(1); opacity:0; }
+}
+@keyframes heartbeat {
+  0%,100% { transform:scale(1); }
+  15%     { transform:scale(1.25); }
+  30%     { transform:scale(1); }
+  45%     { transform:scale(1.25); }
+  70%     { transform:scale(1); }
+}
+@keyframes pulseGlow {
+  0%,100% { text-shadow: 0 0 15px rgba(212,160,48,.4), 0 0 30px rgba(212,160,48,.2); }
+  50%     { text-shadow: 0 0 30px rgba(212,160,48,.7), 0 0 60px rgba(212,160,48,.4), 0 0 90px rgba(212,160,48,.2); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes sparkle {
+  0%,100% { opacity:0; transform:scale(0); }
+  50%     { opacity:1; transform:scale(1); }
+}
+@keyframes slowZoom {
+  0%   { transform:scale(1); }
+  100% { transform:scale(1.1); }
+}
+@keyframes bounceY {
+  0%,100% { transform:translateY(0); }
+  50%     { transform:translateY(8px); }
+}
+@keyframes spinSlow { to { transform:rotate(360deg); } }
+@keyframes glowBox {
+  0%,100% { box-shadow: 0 0 15px rgba(212,160,48,.2), inset 0 0 15px rgba(212,160,48,.05); }
+  50%     { box-shadow: 0 0 30px rgba(212,160,48,.45), inset 0 0 25px rgba(212,160,48,.12); }
+}
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(35px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes sway {
+  0%,100% { transform: rotate(-3deg); }
+  50%     { transform: rotate(3deg); }
+}
+
+/* ─── UTILITY ANIMATIONS ─── */
+.a-heartbeat  { animation: heartbeat 1.6s ease-in-out infinite; }
+.a-glow       { animation: pulseGlow 3s ease-in-out infinite; }
+.a-bounce     { animation: bounceY 2s ease-in-out infinite; }
+.a-spin       { animation: spinSlow 25s linear infinite; }
+.a-glow-box   { animation: glowBox 3.5s ease-in-out infinite; }
+.a-reveal     { animation: fadeUp .9s ease-out both; }
+.a-sway       { animation: sway 4s ease-in-out infinite; }
+
+.shimmer-gold {
+  background: linear-gradient(90deg, var(--gold) 0%, #fff 20%, var(--gold-light) 40%, #fff 60%, var(--gold) 80%, #fff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+
+/* stagger delays */
+.d1{animation-delay:.2s}  .d2{animation-delay:.4s}  .d3{animation-delay:.6s}
+.d4{animation-delay:.8s}  .d5{animation-delay:1s}   .d6{animation-delay:1.2s}
+.d7{animation-delay:1.4s} .d8{animation-delay:1.6s} .d9{animation-delay:1.8s}
+.d10{animation-delay:2s}  .d11{animation-delay:2.2s} .d12{animation-delay:2.4s}
+
+/* ─── FLOATING EMOJIS ─── */
+.floats { position:fixed; inset:0; pointer-events:none; z-index:50; overflow:hidden; }
+.floats span { position:absolute; bottom:-50px; animation: floatUp linear infinite; }
+
+/* ─── GLASS CARD ─── */
+.glass {
+  background: rgba(255,255,255,.06);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+/* ─── LETTER PAPER ─── */
+.letter-paper {
+  background: linear-gradient(135deg, #fdf8ef, #fdf3e0 50%, #fcefd6);
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,.06), 0 12px 24px rgba(0,0,0,.1), 0 24px 48px rgba(0,0,0,.06);
+}
+.letter-paper::before {
+  content:''; position:absolute; inset:0 36px; border-radius:inherit;
+  background-image: repeating-linear-gradient(transparent, transparent 35px, rgba(180,150,120,.15) 35px, rgba(180,150,120,.15) 36px);
+  pointer-events:none;
+}
+
+/* ─── STANZA DIVIDER ─── */
+.stanza-sep { display:flex; align-items:center; justify-content:center; gap:14px; padding:20px 0; }
+.stanza-sep::before, .stanza-sep::after {
+  content:''; height:1px; width:50px;
+  background: linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+/* ─── SECTION DIVIDER ─── */
+.section-divider {
+  height: 80px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 5;
+}
+.section-divider .line {
+  height: 1px; width: 120px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+}
+
+/* ─── NAV DOTS ─── */
+.nav-dot { width:11px; height:11px; border-radius:50%; background:rgba(212,160,48,.3); transition:all .3s; }
+.nav-link:hover .nav-dot { background:var(--gold); box-shadow:0 0 14px rgba(212,160,48,.6); }
+.nav-link .nav-label { opacity:0; transform:translateX(8px); transition:all .3s; }
+.nav-link:hover .nav-label { opacity:1; transform:translateX(0); }
+
+/* ─── HOVER CARDS ─── */
+.reason-card { transition: all .4s ease; }
+.reason-card:hover { background:rgba(255,255,255,.1)!important; transform:translateY(-5px) scale(1.03); }
+.reason-card:hover .r-emoji { transform:scale(1.3); }
+.r-emoji { transition:transform .3s; }
+.poem-card { transition: all .4s ease; }
+.poem-card:hover { background:rgba(255,255,255,.1)!important; }
+
+/* ─── SPARKLE DOTS ─── */
+.sdot { position:absolute; width:3px; height:3px; background:var(--gold-light); border-radius:50%; }
+
+/* ─── READABLE SPACING ─── */
+.readable {
+  font-size: 1.15rem;
+  line-height: 2.2;
+  letter-spacing: .02em;
+}
+@media (min-width:640px) {
+  .readable { font-size: 1.3rem; line-height: 2.3; }
+}
+@media (min-width:768px) {
+  .readable { font-size: 1.45rem; line-height: 2.4; }
+}
